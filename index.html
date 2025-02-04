@@ -1,0 +1,57 @@
+<html>
+<head>
+
+    <title>FreeFloBox’s Free Menstrual Product Usage</title>
+
+    <!-- Correct Tableau API script -->
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+
+</head>
+
+<body>
+
+    <h1>FreeFloBox’s Free Menstrual Product Usage</h1>
+
+    <!-- Export buttons -->
+    <button id="exportPDF">Generate PDF</button>
+    <button id="exportImage">Generate Image</button>
+
+    <!-- Tableau visualization container -->
+    <div id="vizContainer" style="width: 800px; height: 600px;"></div>
+
+    <script>
+        var viz;
+
+        // Set up the Tableau visualization
+        window.onload = function() {
+            var containerDiv = document.getElementById("vizContainer");
+            var url = "https://public.tableau.com/views/FreeFloBoxsFreeMenstrualProducts/FreeFloBoxsStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";  // Tableau URL
+            var options = {
+                width: containerDiv.offsetWidth,
+                height: containerDiv.offsetHeight,
+                hideTabs: true,
+                hideToolbar: true
+            };
+
+            // Create and embed the visualization
+            viz = new tableau.Viz(containerDiv, url, options);
+        };
+
+        // Function to export PDF
+        document.getElementById("exportPDF").onclick = function() {
+            if (viz) {
+                viz.showExportPDFDialog();
+            }
+        };
+
+        // Function to export image
+        document.getElementById("exportImage").onclick = function() {
+            if (viz) {
+                viz.showExportImageDialog();
+            }
+        };
+    </script>
+
+</body>
+
+</html>
